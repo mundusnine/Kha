@@ -3,6 +3,7 @@ package kha.audio2;
 class AudioChannel implements kha.audio1.AudioChannel {
 	public var data: kha.arrays.Float32Array;
 	private var myVolume: Float;
+	private var myPitch:Float;
 	private var myPosition: Int;
 	private var paused: Bool = false;
 	private var looping: Bool;
@@ -10,6 +11,7 @@ class AudioChannel implements kha.audio1.AudioChannel {
 	public function new(looping: Bool) {
 		this.looping = looping;
 		myVolume = 1;
+		myPitch = 1;
 		myPosition = 0;
 	}
 	
@@ -85,6 +87,16 @@ class AudioChannel implements kha.audio1.AudioChannel {
 
 	private function set_volume(value: Float): Float {
 		return myVolume = value;
+	}
+
+	public var pitch(get, set): Float;
+	
+	private function get_pitch(): Float {
+		return myPitch;
+	}
+
+	private function set_pitch(value: Float): Float {
+		return myPitch = value;
 	}
 
 	public var finished(get, null): Bool;

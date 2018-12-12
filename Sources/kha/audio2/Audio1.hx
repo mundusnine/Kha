@@ -86,7 +86,7 @@ class Audio1 {
 		}
 	}
 	
-	public static function play(sound: Sound, loop: Bool = false): kha.audio1.AudioChannel {
+	public static function play(sound: Sound, loop: Bool = false, pitch: Float = 1.0): kha.audio1.AudioChannel {
 		#if cpp
 		mutex.acquire();
 		#end
@@ -95,6 +95,7 @@ class Audio1 {
 			if (soundChannels[i] == null || soundChannels[i].finished) {
 				channel = new AudioChannel(loop);
 				channel.data = sound.uncompressedData;
+				channel.pitch = pitch;
 				soundChannels[i] = channel;
 				break;
 			}

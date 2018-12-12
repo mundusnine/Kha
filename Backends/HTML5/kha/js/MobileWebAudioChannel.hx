@@ -9,6 +9,7 @@ class MobileWebAudioChannel implements kha.audio1.AudioChannel {
 	private var loop: Bool;
 	private var source: AudioBufferSourceNode;
 	private var gain: GainNode;
+	private var myPitch: Float;
 	private var startTime: Float;
 	private var pauseTime: Float;
 	private var paused: Bool = false;
@@ -30,6 +31,7 @@ class MobileWebAudioChannel implements kha.audio1.AudioChannel {
 		gain = MobileWebAudio._context.createGain();
 		source.connect(gain);
 		gain.connect(MobileWebAudio._context.destination);
+		source.playbackRate.value = myPitch;
 	}
 	
 	public function play(): Void {
@@ -82,6 +84,16 @@ class MobileWebAudioChannel implements kha.audio1.AudioChannel {
 
 	private function set_volume(value: Float): Float {
 		return gain.gain.value = value;
+	}
+
+	public var pitch(get, set): Float;
+	
+	private function get_pitch(): Float {
+		return myPitch;
+	}
+
+	private function set_pitch(value: Float): Float {
+		return myPitch = value;
 	}
 
 	public var finished(get, null): Bool;

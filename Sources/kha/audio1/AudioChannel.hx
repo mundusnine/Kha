@@ -11,6 +11,9 @@ interface AudioChannel {
 	public var volume(get, set): Float;
 	private function get_volume(): Float;
 	private function set_volume(value: Float): Float;
+	public var pitch(get, set): Float;
+	private function get_pitch(): Float;
+	private function set_pitch(value: Float): Float;
 	public var finished(get, null): Bool;
 	private function get_finished(): Bool;
 }

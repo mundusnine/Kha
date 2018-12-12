@@ -9,10 +9,12 @@ class StreamChannel implements kha.audio1.AudioChannel {
 	private var atend: Bool = false;
 	@:keep private var loop: Bool;
 	private var myVolume: Float;
+	private var myPitch: Float;
 	private var paused: Bool = false;
 	
 	public function new(data: Bytes, loop: Bool) {
 		myVolume = 1;
+		myPitch = 1;
 		this.loop = loop;
 		initVorbis(data);
 	}
@@ -91,6 +93,16 @@ class StreamChannel implements kha.audio1.AudioChannel {
 
 	private function set_volume(value: Float): Float {
 		return myVolume = value;
+	}
+
+	public var pitch(get, set): Float;
+
+	private function get_pitch(): Float{
+		return myPitch;
+	}
+
+	private function set_pitch(value: Float): Float{
+		return myPitch = value;
 	}
 
 	public var finished(get, null): Bool;

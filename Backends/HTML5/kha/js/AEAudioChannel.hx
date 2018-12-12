@@ -78,6 +78,16 @@ class AEAudioChannel implements kha.audio1.AudioChannel {
 		return element.volume = value;
 	}
 
+	public var pitch(get, set): Float;
+	
+	private function get_pitch(): Float {
+		return element.playbackRate;
+	}
+
+	private function set_pitch(value: Float): Float {
+		return element.playbackRate = value;
+	}
+
 	public var finished(get, null): Bool;
 
 	private function get_finished(): Bool {

@@ -38,11 +38,11 @@ class Audio {
 
 	public static var audioCallback: Int->Buffer->Void;
 	
-	public static function play(sound: Sound, loop: Bool = false): kha.audio1.AudioChannel {
+	public static function play(sound: Sound, loop: Bool = false, pitch: Float = 1.0): kha.audio1.AudioChannel {
 		return null;
 	}
 	
-	public static function stream(sound: Sound, loop: Bool = false): kha.audio1.AudioChannel {
+	public static function stream(sound: Sound, loop: Bool = false, pitch: Float = 1.0): kha.audio1.AudioChannel {
 		return null;
 	}
 }

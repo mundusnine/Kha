@@ -38,6 +38,16 @@ class NodeAudioChannel implements AudioChannel {
 	private function set_volume(value: Float): Float {
 		return 1;
 	}
+
+	public var pitch(get, set): Float;
+	
+	private function get_pitch(): Float {
+		return 1;
+	}
+	
+	private function set_pitch(value: Float): Float {
+		return 1;
+	}
 	
 	public var finished(get, null): Bool;
 	
