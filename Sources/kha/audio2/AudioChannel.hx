@@ -4,7 +4,7 @@ class AudioChannel implements kha.audio1.AudioChannel {
 	public var data: kha.arrays.Float32Array;
 	private var myVolume: Float;
 	private var myPitch:Float;
-	private var myPosition: Int;
+	private var myPosition: Float;
 	private var paused: Bool = false;
 	private var looping: Bool;
 	
@@ -30,8 +30,8 @@ class AudioChannel implements kha.audio1.AudioChannel {
 			var addressable_data = data.length - myPosition;
 			var next_chunk = addressable_data < (length - w_ptr) ? addressable_data : (length - w_ptr);
 			while (chk_ptr < next_chunk) {
-				samples[w_ptr] = data[myPosition];
-				++myPosition;
+				samples[w_ptr] = myPosition < data.length-1 ? data[Std.int(myPosition)]:0;
+				myPosition+=myPitch;
 				++chk_ptr;
 				++w_ptr;
 			}
