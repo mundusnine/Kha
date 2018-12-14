@@ -17,6 +17,7 @@ class StreamChannel implements kha.audio1.AudioChannel {
 	
 	public function new(data: Bytes, loop: Bool) {
 		myVolume = 1;
+		myPitch = 1;
 		this.loop = loop;
 		#if (!kha_no_ogg)
 		reader = Reader.openFromBytes(data);

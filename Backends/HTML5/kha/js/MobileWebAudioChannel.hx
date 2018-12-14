@@ -89,11 +89,11 @@ class MobileWebAudioChannel implements kha.audio1.AudioChannel {
 	public var pitch(get, set): Float;
 	
 	private function get_pitch(): Float {
-		return myPitch;
+		return source.playbackRate.value;
 	}
 
 	private function set_pitch(value: Float): Float {
-		return myPitch = value;
+		return source.playbackRate.value = value;
 	}
 
 	public var finished(get, null): Bool;

@@ -121,10 +121,10 @@ class Audio1 {
 		#end
 	}
 	
-	public static function stream(sound: Sound, loop: Bool = false): kha.audio1.AudioChannel {
+	public static function stream(sound: Sound, loop: Bool = false, pitch: Float = 1.0): kha.audio1.AudioChannel {
 		{
 			// try to use hardware accelerated audio decoding
-			var hardwareChannel = Audio.stream(sound, loop);
+			var hardwareChannel = Audio.stream(sound, loop, pitch);
 			if (hardwareChannel != null) return hardwareChannel;
 		}
 	
@@ -135,6 +135,7 @@ class Audio1 {
 		for (i in 0...channelCount) {
 			if (streamChannels[i] == null || streamChannels[i].finished) {
 				channel = new StreamChannel(sound.compressedData, loop);
+				channel.pitch = pitch;
 				streamChannels[i] = channel;
 				break;
 			}

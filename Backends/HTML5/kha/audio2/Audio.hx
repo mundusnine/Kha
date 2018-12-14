@@ -67,7 +67,7 @@ class Audio {
 
 	public static var audioCallback: Int->Buffer->Void;
 	
-	public static function stream(sound: Sound, loop: Bool = false): kha.audio1.AudioChannel {
+	public static function stream(sound: Sound, loop: Bool = false,pitch: Float = 1.0): kha.audio1.AudioChannel {
 		//var source = _context.createMediaStreamSource(cast sound.compressedData.getData());
 		//source.connect(_context.destination);
 		var element = Browser.document.createAudioElement();
@@ -80,6 +80,7 @@ class Audio {
 		element.loop = loop;
 		var channel = new AEAudioChannel(element);
 		channel.play();
+		channel.pitch = pitch;
 		return channel;
 	}
 }
